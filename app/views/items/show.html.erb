@@ -1,0 +1,52 @@
+
+
+
+
+
+
+<!-- Slideshow -->
+  <div class="w3-container">
+    <div class="w3-display-container mySlides">
+      <img src="/assets/<%= @item.image_url %>" style="width:100%">
+      <div class="w3-display-topleft w3-container w3-padding-32">
+        <span class="w3-white w3-padding-large w3-animate-bottom"><%= @item.title %></span>
+      </div>
+    </div>
+
+
+    <!-- Slideshow next/previous buttons -->
+    <div class="w3-container w3-dark-grey w3-padding w3-xlarge">
+      
+      <div class="w3-center">
+       <h3><%= @item.title %></h3>
+      </div>
+    </div>
+  </div>
+
+
+ <div class="w3-row-padding" id="plans">
+   
+   <br>
+    <div class="w3-col w3-margin-bottom">
+      <div class="w3-card-12">
+       
+        
+        <div class="w3-container">
+          <h3><%= @item.title %></h3>
+          <p class="w3-opacity">Brand: <%= @item.brand %></p>
+          <p><%= @item.description %></p>
+          <p>€<%= @item.price %></p>
+          <p> <a href="/cart/<%= @item.id %>" class="w3-button w3-green w3-padding-large">Add To Cart</a> | <%= link_to 'Back', items_path, :class =>"w3-button w3-orange w3-padding-large" %></p>
+          
+          
+          <p>
+            <%= link_to 'Edit', edit_item_path(@item), :class =>"w3-button w3-red w3-padding-large" %> 
+
+            
+          </p>
+        </div>
+      </div>
+    </div>
+   
+    
+  </div>

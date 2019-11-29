@@ -1,0 +1,12 @@
+<h1>StaticPages#help</h1>
+<p>Find me in app/views/static_pages/help.html.erb</p>
+
+<%= link_to 'New Category', new_category_path, :class =>"button", :role=>"button"  %>
+
+
+
+
+<%= form_for :file_upload, :html => {:multipart => true} do |f| %>
+  <%= f.file_field :my_file %>
+  <%= f.submit "Upload" %>
+<% end %>

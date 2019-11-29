@@ -1,0 +1,22 @@
+
+
+<% @categories.each do |category| %>
+<% if cycle('odd', 'even') == 'odd' %>
+    <div class="w3-col l3 m6 w3-grey w3-container w3-padding-16">
+      <h3><%= category.title %></h3>
+      <p><%= category.description %></p>
+      <p><a href="/category/<%= category.title %>" class="button"><%= category.title %></a></p>
+    </div>
+    
+    <% else %>
+    
+        <div class="w3-col l3 m6 w3-light-grey w3-container w3-padding-16">
+      <h3><%= category.title %></h3>
+      <p><%= category.description %></p>
+      <p><a href="/category/<%= category.title %>" class="button"><%= category.title %></a></p>
+    </div>
+     <% end %>
+ <% end %>
+ 
+ 
+    

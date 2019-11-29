@@ -1,0 +1,44 @@
+<div class="w3-row-padding" id="about">
+
+<h2>Sign up</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", :class =>"w3-input w3-border w3-hover-border-black", :style =>"width:100%" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password", :class =>"w3-input w3-border w3-hover-border-black", :style =>"width:100%" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", :class =>"w3-input w3-border w3-hover-border-black", :style =>"width:100%" %>
+  </div>
+  
+  <div class="field">
+     <%= f.label :username %>
+     <%= f.text_field :username, :class =>"w3-input w3-border w3-hover-border-black", :style =>"width:100%" %>
+  </div>
+  
+  
+    <div class="field">
+     <%= f.label :age %>
+     <%= f.text_field :age, :class =>"w3-input w3-border w3-hover-border-black", :style =>"width:100%" %>
+  </div>
+   
+
+  <div class="actions">
+    <%= f.submit "Sign up", :class =>"w3-button w3-green w3-padding-large" %> | <%= render "devise/shared/links" %>
+  </div>
+<% end %>
+
+<br><br><br>
+</div>

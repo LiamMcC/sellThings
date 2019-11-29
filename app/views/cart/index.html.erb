@@ -1,0 +1,107 @@
+<% if @cart.empty? %>
+<p>You have not added any items yet</p>
+<% end %>
+
+  <div class="w3-row w3-container">
+    <div class="w3-center w3-padding-10">
+      <span class="w3-xlarge  w3-padding-16">Cart</span>
+    </div>
+    </div>
+
+<p id="notice"><%= notice %></p>
+
+<div id="itemsContainer">
+    <table id="customers">
+        <% total = 0 %>
+        
+        
+                <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Remove</th>
+            <th>Qty + / -</th>
+            <th>Price</th>
+            <th>Qty</th>
+            <th>Total</th>
+            
+            
+        </tr>
+        
+        <% @cart.each do |id, quantity| %>
+        
+        <% item = Item.find_by_id(id) %>
+        
+        
+
+        
+        <tr>
+            <td>
+                <div class="image">
+                    <%= link_to (image_tag item.image_url, :style =>"height:40px"), item %>
+                </div>
+                
+            </td>
+            
+            <td class="title"><%= link_to item.title, item %></td>
+            <td><a href="/remove/<%= item.id %>" class="w3-button w3-red w3-padding-large">X</a></td>
+            <td>
+                <a href="/reduce/<%= item.id %>" class="w3-button w3-green w3-padding-large" >+</a>
+                
+                <a href="/reduce/<%= item.id %>" class="w3-button w3-orange w3-padding-large" >-</a>
+                
+                </td>
+            <td class="price"><%= number_to_currency(item.price, :unit =>"€") %></td>
+            <td class="quantity"><%= quantity %></td>
+            <td class="price"><%= number_to_currency(quantity * item.price, :unit =>"€") %></td>
+            
+        </tr>
+        
+        <tr>
+            <% total += quantity * item.price %>
+            
+            <% session[:howMuch] = total %>
+          </tr>
+         <% end %>
+         <tr>
+             <td>
+            Grang Total: <%= number_to_currency(total, :unit => "€") %>
+            </td>
+          </tr>
+          
+          
+           
+           
+    </table>
+    
+    <div class="w3-row w3-container">
+        <div class="w3-center w3-padding-10">
+            <a href="/items" class="w3-button w3-green w3-padding-large">Continue Shopping</a> 
+            |
+            
+            
+            <a href="/checkout" class="w3-button w3-orange w3-padding-large">Checkout</a>
+            |
+            <a href="/cart/clearcart" class="w3-button w3-red w3-padding-large">Empty Cart</a> 
+    </div>
+    </div>
+    
+   <div class="w3-row w3-container">
+    
+     <table id="customers">
+       <% @orderitems.each do |orderitem| %>
+      <tr>
+        <td><%= orderitem.created_at %></td>
+        
+        <td><%= orderitem.title %></td>
+       <td><%= orderitem.order_id %></td>
+       
+      </tr>
+      
+      
+      
+    <% end %>
+
+    </table>
+    
+    </div>
+      </div>
